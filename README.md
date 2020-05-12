@@ -18,4 +18,4 @@ is a web-based tool that helps streamline and track medicines registration for a
 <li><b>Adjustable modules and user privileges:</b> allows modules to be added or removed and user access to be restricted
 </ul>
 <h1>Database dump</h1>
-Archived dump of the database is here <b>DumpGen20200512.zip</b>
+Please, extract archived dump of the database from <b>DumpGen20200512.zip</b>. Database name should be <b>pdx_gen</b>
