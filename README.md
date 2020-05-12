@@ -1,19 +1,12 @@
-Pharmadex
+<img src="Logos/SIAPS_Name%2BUSAID.Horz.png" width="150"> &nbsp;&nbsp; <img src="Logos/MSH_4c.png" width="75">
 
-High-quality and affordable medicines are the foundation for a country’s ability to provide effective health care and national medicines regulatory authorities (NMRAs) must effectively register and track pharmaceutical products to ensure that they are readily available and safe. However, weak medicine regulatory systems among other factors can put people at risk of using unsafe medicines and waste limited funds especially in low and middle income countries (LMICs). USAID MTaPS Program is currently supporting interested NMRAs to implement electronic pharmaceutical management information systems using Pharmadex.
-What is Pharmadex? 
-Pharmadex is a web-based tool that helps streamline and track medicines registration for NMRAs to ensure that they have the most updated medicines available and approved for prescribing and use. With Pharmadex, NMRAs can: 
-    • Record and organize information on suppliers and products
-    • Track product applications in the registration process
-    • Analyze and compare suppliers and products
-    • Track critical information for decision-making, such as costs, usage, and safety
+# Pharmadex
+The SIAPS Program is funded by the U.S. Agency for International Development (USAID) under cooperative agreement AID-OAA-A-11-00021 and implemented by Management Sciences for Health. The information provided on this web site is not official U.S. Government information and does not represent the views or positions of the U.S. Agency for International Development or the U.S. Government. 
 
-Pharmadex is a Java-based application that can run on a desktop or an Android tablet/smart phone. The software is available on the MSH GitHub site: github.com/MSH/Pharmadex.
-Features
-    • Comprehensive system management: An administrator can configure and manage the system
-    • Transparent process: An applicant (distributor or manufacturer) can submit and track an application or amendment
-    • Product lifecycle management: Enables coordinators and evaluators to assign and track evaluations; regulator to approve, renew, suspend, or cancel a product; and health care user to search for and verify approved products
-    • International standards access: provides access to international standard terminology databases and dictionaries
+Visit http://dc-cpm-pvimsdemo.msh.org/ to try a demo version of the software. You may login with the name of User and the password of User123!
 
-    • Monitoring and evaluation: enables overview of aggregate data and management information
-    • Adjustable modules and user privileges: allows modules to be added or removed and user access to be restricted
+Disclaimer of warranties and limitation of liability
+
+The PViMS software, documentation and other products, information, materials and services provided by Management Sciences for Health (MSH or Licensor) are provided “as is.” Licensor hereby disclaims all warranties, whether express, implied, statutory or other (including all warranties arising from course of dealing, usage or trade practice), and specifically disclaims all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement. Without limiting the foregoing, licensor makes no warranty of any kind that this software or documentation, or any other licensor or third-party goods, services, technologies or materials (including any software or hardware), or any products or results of the use of any of them, will meet the users’ or other persons' requirements, operate without interruption, achieve any intended result, be compatible or work with any other goods, services, technologies or materials (including any software, hardware, system or network), or be secure, accurate, complete, free of harmful code or error-free. Licensor is not responsible for further development or any future versions of PViMS.
+
+Copyright Management Sciences for Health.
