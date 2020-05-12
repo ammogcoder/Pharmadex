@@ -8,12 +8,12 @@ is a web-based tool that helps streamline and track medicines registration for a
 </ul>
 <h1>Features</h1>
 <ul>
-<li>Online application system: facilitates standardized formatting, storage, cataloguing, and retrieval of documents
-<li>Multiple database storage: supports and coordinates databases across several regulatory units
-<li>Licensing and inspection transparency: generates and allows easy sharing of licenses, inspection reports, and enforcement updates
-<li>Product lifecycle management: enables tracking of promotional activities, safety monitoring, and approval history for products
-<li>Round-the-clock registration: allows timely, convenient access to national register of products
-<li>International standards access: provides access to international standard terminology databases and dictionaries
-<li>Monitoring and evaluation: enables overview of aggregate data and management information
-<li>Adjustable modules and user privileges: allows modules to be added or removed and user access to be restricted
+  <li><b>Online application system:</b> facilitates standardized formatting, storage, cataloguing, and retrieval of documents
+<li><b>Multiple database storage: supports</b> and coordinates databases across several regulatory units
+<li><b>Licensing and inspection transparency:</b> generates and allows easy sharing of licenses, inspection reports, and enforcement updates
+<li><b>Product lifecycle management:</b> enables tracking of promotional activities, safety monitoring, and approval history for products
+<li><b>Round-the-clock registration:</b> allows timely, convenient access to national register of products
+<li><b>International standards access:</b> provides access to international standard terminology databases and dictionaries
+<li><b>Monitoring and evaluation:</b> enables overview of aggregate data and management information
+<li><b>Adjustable modules and user privileges:</b> allows modules to be added or removed and user access to be restricted
 </ul>
