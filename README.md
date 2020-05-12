@@ -1,7 +1,7 @@
 <h1>Pharmadex</h1>
 National governments must effectively register and track pharmaceutical products to ensure that they are readily available and safe. When countries have weak medicine registration systems—backlogs of drug registration applications, inefficient drug testing systems, and incomplete data on suppliers and products—they can waste millions of dollars and put millions of people at risk of using unsafe and low-quality medicines.
 <h1>What is Pharmadex?</h1> 
-is a web-based tool that helps streamline and track medicines registration for a national drug regulatory authority by—
+<b>Pharmadex</b> is a web-based tool that helps streamline and track medicines registration for a national drug regulatory authority by—
 <ul>
 <li>Recording and organizing information on suppliers and products
 <li>Tracking product applications in the registration process
