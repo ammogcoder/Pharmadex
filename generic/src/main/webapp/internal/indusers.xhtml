@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="../templates/registration_layout.xhtml">
+
+	<ui:define name="regcontent">
+		<div class="post">
+			<h1 class="title ui-widget-header ui-corner-all">
+				#{msgs.usersperf}</h1>
+		</div>
+		<h:form prependId="false">
+			<p:growl id="growl" showDetail="false" showSummary="true" />
+			<p:dataTable id="items" var="item"
+				value="#{dashboardMBean.reviewers}" widgetVar="itemstable"
+				paginator="true" rows="20" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="20,40,100">
+				<p:column headerText="#{msgs.processor}">
+					<h:outputText value="#{item.userName}" />
+				</p:column>
+				<p:column headerText="#{msgs.pri_processor}" width="15%">
+					<p:commandLink id="primary" value="#{item.primary}" ajax="true"
+						action="#{dashboardMBean.changeCurrentReviewer(item, true)}"
+						oncomplete="PF('reviewDetailsDlg').show()" update="showDetails" />
+				</p:column>
+				<p:column headerText="#{msgs.sec_processor}" width="15%">
+					<p:commandLink id="secondary" value="#{item.secondary}" ajax="true"
+						action="#{dashboardMBean.changeCurrentReviewer(item, false)}"
+						oncomplete="PF('reviewDetailsDlg').show()" update="showDetails" />
+				</p:column>
+			</p:dataTable>
+
+			<p:panel>
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/excel.png" />
+					<p:dataExporter type="xls" target="items"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/pdf.png" />
+					<p:dataExporter type="pdf" target="items"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/csv.png" />
+					<p:dataExporter type="csv" target="items"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+			</p:panel>
+		</h:form>
+
+		<p:dialog modal="true" widgetVar="reviewDetailsDlg"
+			header="#{dashboardMBean.reviwerDetailHeader}" id="showDetails"
+			dynamic="true" width="600">
+			<p:dataTable id="detailsByDates"
+				value="#{dashboardMBean.reviewerDetails}" var="item">
+				<p:column headerText="#{msgs.assigndate}" width="15%">
+					<h:outputLabel converter="javax.faces.DateTime"
+						value="#{item.reviewDate}" />
+				</p:column>
+				<p:column headerText="#{msgs.module}" width="15%">
+					<h:outputText value="#{item.ctdModule}" />
+				</p:column>
+				<p:column headerText="#{msgs.review_status}">
+					<h:outputText value="#{item.reviewStatus}" />
+				</p:column>
+				<p:column headerText="#{msgs.applicant_name}">
+					<h:outputText value="#{item.applicant}" />
+				</p:column>
+				<p:column headerText="#{msgs.prod_name}">
+					<h:outputText value="#{item.product}" />
+				</p:column>
+				<p:column headerText="#{msgs.moderator_name}">
+					<h:outputText value="#{item.moderator}" />
+				</p:column>
+				<p:column headerText="#{msgs.daysonreview}">
+					<h:outputText value="#{item.days}" />
+				</p:column>
+			</p:dataTable>
+			<h:form>
+			<p:panel>
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/excel.png" />
+					<p:dataExporter type="xls" target="detailsByDates"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/pdf.png" />
+					<p:dataExporter type="pdf" target="detailsByDates"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+				<h:commandLink>
+					<p:graphicImage value="/resources/images/csv.png" />
+					<p:dataExporter type="csv" target="detailsByDates"
+						fileName="#{msgs.usersperf}" />
+				</h:commandLink>
+
+			</p:panel>
+			</h:form>
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>

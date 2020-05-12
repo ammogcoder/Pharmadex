@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form id="fir_alert">
+		<p:dataTable id="fir_table" var="item"
+			value="#{alertsMBean.reviewFIRTables}">
+			<p:column headerText="#{msgs.prod_name}" width="50%">
+				<p:commandLink value="#{item.prodName}"
+					action="/internal/reviewInfo.faces" ajax="false" rendered="#{!userSession.company}">
+					<f:param name="reviewInfoID" value="#{item.id}" />
+					<f:param name="sourcePage"
+						value="/home.faces" />
+				</p:commandLink>
+				<p:commandLink value="#{item.prodName}"
+					action="/internal/processreg" ajax="false" rendered="#{userSession.company}">
+					<f:param name="prodAppID" value="#{item.prodAppID}" />
+					<f:param name="sourcePage"
+						value="/home.faces" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="#{msgs['ReviewStatus.FIR_SUBMIT']}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.submittedDate}" />
+			</p:column>
+			<p:column headerText="#{msgs.assigndate}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.assignDate}" />
+			</p:column>
+			<p:column headerText="#{msgs.global_duedate}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.dueDate}" />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:composition>

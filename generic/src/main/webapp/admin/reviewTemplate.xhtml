@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="../templates/layout.xhtml">
+
+	<ui:define name="content">
+		<h:form id="reviewTemplateForm">
+			<p:growl id="growl" showDetail="true" showSummary="false" />
+			<p:panel header="#{msgs.reviewtemplate}">
+				<p:panelGrid columns="2">
+					<p:fileUpload
+						fileUploadListener="#{reviewTemplMBean.handleFileUpload}"
+						mode="advanced" dragDropSupport="true" update="growl messages"
+						sizeLimit="100000" allowTypes="/(\.|\/)(docx)$/" />
+					<p:commandButton value="Download" ajax="false"
+						onclick="PrimeFaces.monitorDownload(start, stop);"
+						icon="ui-icon-arrowthick-1-s"
+						rendered="#{reviewTemplMBean.uploaded}">
+						<p:fileDownload value="#{reviewTemplMBean.file}" />
+					</p:commandButton>
+				</p:panelGrid>
+				<p:messages id="messages" showDetail="true" showSummary="false" />
+			</p:panel>
+
+		</h:form>
+		<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+			draggable="false" closable="false" resizable="false" dynamic="true">
+			<p:graphicImage value="/resources/images/ajax-loader.gif" />
+		</p:dialog>
+
+	</ui:define>
+	<script type="text/javascript">
+			function start() {
+    			PF('statusDialog').show();
+			}
+ 
+			function stop() {
+   			 PF('statusDialog').hide();
+			}
+	</script>
+</ui:composition>

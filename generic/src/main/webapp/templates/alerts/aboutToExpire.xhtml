@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form id="aboutToExpire_alert">
+		<p:dataTable id="aboutToExpire_table" var="item"
+			value="#{alertsMBean.aboutToExpire}">
+			<p:column headerText="#{msgs.prod_name}">
+				<h:outputLabel value="#{item.prodName}" rendered="#{!item.accesible}" />
+				<p:commandLink id="viewLink" value="#{item.prodName}"
+					action="/public/productdetail" ajax="false"
+					rendered="#{item.accesible}">
+					<f:param name="prodAppID" value="#{item.prodAppID}" />
+					<f:param name="SourcePage" value="/home.faces" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="#{msgs.applicant_name}">
+				<h:outputLabel value="#{item.appName}" rendered="#{!item.accesible}" />
+				<p:commandLink value="#{item.appName}"
+					action="#{applicantMBean.publicForm()}" ajax="false"
+						rendered="#{item.accesible}">
+					<f:param name="sourcePage" value="/home.faces" />
+					<f:param name="appID" value="#{item.appId}" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="#{msgs.registration_date}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.regDate}" />
+			</p:column>
+			<p:column headerText="#{msgs.reg_expired}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.regExpiryDate}" />
+			</p:column>
+			<p:column headerText="#{msgs.daystoexpire}">
+				<h:outputLabel value="#{item.daysToExpire}" />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:composition>

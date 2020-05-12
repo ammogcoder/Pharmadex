@@ -1,0 +1,105 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="../templates/registration_layout.xhtml">
+
+	<ui:define name="regcontent">
+		<div class="post">
+			<h1 class="title ui-widget-header ui-corner-all">
+				#{msgs.submitted_applications}</h1>
+		</div>
+		<h:form prependId="false">
+			<p:growl id="growl" showDetail="false" showSummary="true" />
+			<p:dataTable id="items" var="item"
+				value="#{dashboardMBean.submitted}" widgetVar="itemstable"
+				paginator="true" rows="20" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="20,40,100">
+				<p:column headerText="#{msgs.year}" width="10%">
+					<h:outputText value="#{item.year}" />
+				</p:column>
+				<p:column headerText="#{msgs.quarter}" width="10%">
+					<h:outputText value="#{item.quarter}" />
+				</p:column>
+				<p:column headerText="#{msgs.applicant_name}">
+				<p:commandLink value="#{item.name}"
+					action="#{applicantMBean.publicForm()}" ajax="false">
+					<f:param name="sourcePage" value="/internal/indsubmitted.xhtml" />
+					<f:param name="appID" value="#{item.appId}" />
+				</p:commandLink>
+				</p:column>
+				<p:column headerText="#{msgs.global_quantity}" width="15%">
+					<p:commandLink id="quantity" value="#{item.quantity}" ajax="true"
+						action="#{dashboardMBean.changeYearQuart(item)}"
+						oncomplete="PF('showMonthsDlg').show()" update="showMonths" />
+				</p:column>
+			</p:dataTable>
+
+			<h:panelGrid columns="2" width="100%">
+				<p:panel>
+					<h:commandLink>
+						<p:graphicImage value="/resources/images/excel.png" />
+						<p:dataExporter type="xls" target="items"
+							fileName="#{msgs.product_list}" />
+					</h:commandLink>
+
+					<h:commandLink>
+						<p:graphicImage value="/resources/images/pdf.png" />
+						<p:dataExporter type="pdf" target="items"
+							fileName="#{msgs.product_list}" />
+					</h:commandLink>
+
+					<h:commandLink>
+						<p:graphicImage value="/resources/images/csv.png" />
+						<p:dataExporter type="csv" target="items"
+							fileName="#{msgs.product_list}" />
+					</h:commandLink>
+
+					<h:commandLink>
+						<p:graphicImage value="/resources/images/xml.png" />
+						<p:dataExporter type="xml" target="items"
+							fileName="#{msgs.product_list}" />
+					</h:commandLink>
+				</p:panel>
+			</h:panelGrid>
+		</h:form>
+
+		<p:dialog modal="true" widgetVar="showMonthsDlg"
+			header="#{dashboardMBean.quartHeader}" id="showMonths" dynamic="true"
+			width="600">
+			<p:tabView>
+				<p:tab title="#{msgs.bymonths}">
+					<p:dataTable id="itemsByMonth"
+						value="#{dashboardMBean.submittedByMonths}" var="item">
+						<p:column headerText="#{msgs.month}" width="15%">
+							<h:outputText value="#{item.monthName}" />
+						</p:column>
+						<p:column headerText="#{msgs.applicant_name}" width="70%">
+							<h:outputText value="#{item.name}" />
+						</p:column>
+						<p:column headerText="#{msgs.global_quantity}">
+							<h:outputText value="#{item.quantity}" />
+						</p:column>
+					</p:dataTable>
+				</p:tab>
+				<p:tab title="#{msgs.bystate}">
+					<p:dataTable id="itemsByStates"
+						value="#{dashboardMBean.submittedByState}" var="item">
+						<p:column headerText="#{msgs.registration_status}" width="15%">
+							<h:outputText value="#{item.regState}" />
+						</p:column>
+						<p:column headerText="#{msgs.applicant_name}" width="70%">
+							<h:outputText value="#{item.name}" />
+						</p:column>
+						<p:column headerText="#{msgs.global_quantity}">
+							<h:outputText value="#{item.quantity}" />
+						</p:column>
+					</p:dataTable>
+				</p:tab>
+			</p:tabView>
+		</p:dialog>
+
+	</ui:define>
+</ui:composition>

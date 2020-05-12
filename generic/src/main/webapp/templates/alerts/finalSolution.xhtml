@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:form id="finalSolution_alert">
+		<p:dataTable id="finalSolution_table" var="item"
+			value="#{alertsMBean.readyForHead}">
+			<p:column headerText="#{msgs.prod_name}">
+				<p:commandLink id="viewLink" value="#{item.prodName}"
+					action="/internal/processreg" ajax="false">
+					<f:param name="prodAppID" value="#{item.prodAppID}" />
+					<f:param name="sourcePage" value="/home.faces" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="#{msgs.applicant_name}">
+				<p:commandLink value="#{item.appName}"
+					action="/internal/processapp.faces" ajax="false">
+					<f:param name="sourcePage" value="/home.faces" />
+					<f:param name="appID" value="#{item.appId}" />
+				</p:commandLink>
+			</p:column>
+			<p:column headerText="#{msgs.global_duedate}">
+				<h:outputLabel converter="javax.faces.DateTime"
+					value="#{item.regDate}" />
+			</p:column>
+			<p:column headerText="#{msgs.registration_status}">
+				<h:outputLabel value="#{msgs[item.regState.key]}" />
+			</p:column>
+		</p:dataTable>
+
+	</h:form>
+</ui:composition>

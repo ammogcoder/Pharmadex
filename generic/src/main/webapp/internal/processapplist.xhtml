@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="../templates/registration_layout.xhtml">
+	<ui:define name="regcontent">
+		<p:messages id="messages" />
+		<p:panel header="#{msgs.applicant_reg_process}">
+			<h:form prependId="false">
+
+
+				<p:dataTable id="applicants" var="licHolder"
+					value="#{processAppListBn.pendingApps}">
+					<p:column headerText="#{msgs.applicant}">
+						<p:commandLink value="#{licHolder.appName}"
+							action="/internal/processapp.faces" ajax="false">
+							<f:param name="sourcePage" value="/internal/processapplist.faces" />
+							<f:param name="appID" value="#{licHolder.applcntId}" />
+						</p:commandLink>
+					</p:column>
+
+					<p:column headerText="#{msgs.applicant_submitdate}">
+						<h:outputLabel converter="javax.faces.DateTime"
+							value="#{licHolder.submitDate}" />
+					</p:column>
+
+					<p:column headerText="#{msgs.applicant_country}">
+                        #{licHolder.address.country.countryName}
+                    </p:column>
+
+				</p:dataTable>
+
+
+			</h:form>
+		</p:panel>
+
+	</ui:define>
+</ui:composition>

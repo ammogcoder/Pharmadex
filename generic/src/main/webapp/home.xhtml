@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="templates/admin_layout.xhtml">
+	<ui:define name="content">
+		<h:panelGrid columns="2" width="100%"  class="title ui-widget-header ui-corner-all" style="padding:0px">
+			<h:panelGroup>
+			<h1 style="padding-left: 50px;">
+				#{msgs.Home_Welcome}
+			</h1>
+			</h:panelGroup>
+			<h:panelGroup>
+			<h:outputLink value="guidelines.faces"> 
+  						<h:graphicImage library="images" name="computer.svg" width="40"
+										alt="US English" /> 
+			</h:outputLink>
+			</h:panelGroup>
+		</h:panelGrid>
+		<p:messages id="messages" />
+		<p:growl id="growl" />
+		<div>
+			<p:panel rendered="#{userSession.publicDomain}">
+				<table>
+					<tr>
+						<td style="vertical-align: top; padding-left: 10px;"><p:galleria
+								value="#{galleriaBean.images}" var="image" panelWidth="750"
+								panelHeight="350" effectSpeed="100000" showCaption="false">
+								<h:graphicImage
+									value="/resources/images/galleria/#{image.imageName}"
+									alt="#{image.imageName}" width="750px" height="340px" />
+							</p:galleria>
+						</td>
+						<td style="vertical-align: top">
+							<h:form>
+								<p:menu style="width:260px;">
+									<p:submenu label="#{msgs.home_links}">
+										<p:menuitem value="#{msgs.Home_aboutus}"
+											url="/aboutus.faces" ajax="false" />
+										<p:menuitem value="#{msgs.Home_guidelines}"
+											url="/guidelines.faces" ajax="false" />
+										<p:menuitem value="#{msgs.contactus}"
+											url="/contactus.faces" ajax="false" />
+									</p:submenu>
+								</p:menu>
+							</h:form>
+						</td>
+					</tr>
+				</table>
+			</p:panel>
+			<p:panel rendered="#{!userSession.publicDomain}">
+				<table>
+					<tr>
+						<td rowspan="2" style="width: 750px; vertical-align: top;"><p:panel
+								header="#{msgs.alert}" style="height:100%;">
+								<p:panelGrid columns="1" style="width: 100%;">
+									<p:panel header="#{msgs.submitted_applications}"
+										style="border: none!important;"
+										rendered="#{userSession.staff}">
+										<ui:include src="/templates/alerts/newappl.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.saved_applications}"
+										style="border: none!important;"
+										rendered="#{userSession.company || userSession.staff}">
+										<ui:include src="/templates/alerts/saved.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.process_review_list}"
+										style="border: none!important;"
+										rendered="#{userSession.reviewer}">
+										<ui:include src="/templates/alerts/review.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs['ReviewStatus.FIR_SUBMIT']}"
+										style="border: none!important;"
+										rendered="#{userSession.reviewer || userSession.moderator || userSession.company}">
+										<ui:include src="/templates/alerts/fir.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.execsummary}"
+										style="border: none!important;"
+										rendered="#{userSession.moderator}">
+										<ui:include src="/templates/alerts/execSummary.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.assignreviewer}"
+										style="border: none!important;"
+										rendered="#{userSession.moderator}">
+										<ui:include src="/templates/alerts/assignRevs.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.reg_med_reg}"
+										style="border: none!important;" rendered="#{userSession.head}">
+										<ui:include src="/templates/alerts/finalSolution.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.expiring_prod}"
+										style="border: none!important;"
+										rendered="#{userSession.head || userSession.company || userSession.publicDomain}">
+										<ui:include src="/templates/alerts/aboutToExpire.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.justregistered}"
+										style="border: none!important;"
+										rendered="#{userSession.head || userSession.publicDomain || userSession.company}">
+										<ui:include src="/templates/alerts/justRegistered.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.justexpired}"
+										style="border: none!important;"
+										rendered="#{userSession.head || userSession.publicDomain}">
+										<ui:include src="/templates/alerts/justLost.xhtml" />
+									</p:panel>
+									<p:panel header="#{msgs.applicant_reg_process}"
+										style="border: none!important;"
+										rendered="#{userSession.admin}">
+										<ui:include src="/templates/alerts/pendingApplicants.xhtml" />
+									</p:panel>
+								</p:panelGrid>
+							</p:panel></td>
+						<td style="vertical-align: top; padding-left: 10px;"><p:galleria
+								value="#{galleriaBean.images}" var="image" panelWidth="290"
+								panelHeight="130" showCaption="false">
+								<h:graphicImage
+									value="/resources/images/galleria/#{image.imageName}"
+									alt="#{image.imageName}" width="290px" height="130px" />
+							</p:galleria></td>
+					</tr>
+				</table>
+			</p:panel>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
