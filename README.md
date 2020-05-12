@@ -21,3 +21,5 @@ is a web-based tool that helps streamline and track medicines registration for a
 </ul>
 <h1>Database dump</h1>
 Please, extract archived dump of the database from <b>DumpGen20200512.zip</b>. Database name should be <b>pdx_gen</b>
+<h1>Source Code</h1>
+Source code is classic Maven 2 project. Please, pull & build
