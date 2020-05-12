@@ -17,3 +17,5 @@ is a web-based tool that helps streamline and track medicines registration for a
 <li><b>Monitoring and evaluation:</b> enables overview of aggregate data and management information
 <li><b>Adjustable modules and user privileges:</b> allows modules to be added or removed and user access to be restricted
 </ul>
+<h1>Database dump</h1>
+Archived dump of the database is here <b>DumpGen20200512.zip</b>
