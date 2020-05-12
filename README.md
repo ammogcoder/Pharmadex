@@ -20,6 +20,6 @@ is a web-based tool that helps streamline and track medicines registration for a
 <li><b>Adjustable modules and user privileges:</b> allows modules to be added or removed and user access to be restricted
 </ul>
 <h1>Database dump</h1>
-Please, extract archived dump of the database from <b>DumpGen20200512.zip</b>. Database name should be <b>pdx_gen</b> RDBMS is <b>MySQL 5.6</b>, Community Edition.
+Please, extract archived dump of the database from <b>DumpGen20200512.zip</b>. Database name should be <b>pdx_gen</b>. RDBMS is <b>MySQL 5.6</b>, Community Edition.
 <h1>Source Code</h1>
 Source code is classic Maven 2 project. Please, clone & build
